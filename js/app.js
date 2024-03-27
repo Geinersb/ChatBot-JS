@@ -5,10 +5,16 @@ const send = document.querySelector('.send');
 
 send.addEventListener("click", ()=> renderUserMessage());
 
+txtInput.addEventListener("keyup",(event)=>{
+    if(event.keyCode === 13){
+        renderUserMessage();
+    }
+})
 
 const renderUserMessage = () =>{
     const userInput = txtInput.value;
     renderMessageEle(userInput);
+    txtInput.value="";
 }
 
 const renderMessageEle = (txt)=>{
@@ -16,4 +22,9 @@ const renderMessageEle = (txt)=>{
     const txtNode = document.createTextNode(txt);
     messageEle.classList.add("user-message");
     messageEle.append(txtNode);
+    chatBody.append(messageEle);
+}
+
+const getChatBotResponse = (userInput) => {
+    return responseObj[userInput]
 }
