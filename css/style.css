@@ -53,6 +53,7 @@ body{
     padding: 8px 10px;
     flex-direction: column;
     align-items: flex-end;
+    overflow-y: auto;
 }
 
 .chat-input{
@@ -83,10 +84,18 @@ body{
     
 }
 
+.chatbot-message,
 .user-message{
     padding: 8px;
     background: #ccc;
     margin: 5px;
     width: max-content;
     border-radius: 10px 3px 10px 10px;
+}
+
+.chatbot-message{
+    background: #0652c0;
+    color: var(--light-color);
+    align-self: flex-start;
+    border-radius: 10px 10px 3px 10px;
 }
