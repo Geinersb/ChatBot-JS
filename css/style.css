@@ -22,6 +22,14 @@ body{
     border-radius: 10px;
 }
 
+.container.collapse{
+    height: 60px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    border: none;
+}
+
 .chat-header{
     height: 60px;
     display: flex;
@@ -30,6 +38,7 @@ body{
     background-color: #0652c0;
     color: var(--light-color);
     font-size: 1.5rem;
+    cursor: pointer;
 }
 
 .chat-header .logo{
@@ -54,6 +63,8 @@ body{
     flex-direction: column;
     align-items: flex-end;
     overflow-y: auto;
+    overflow: hidden;
+    position: relative;
 }
 
 .chat-input{
@@ -93,9 +104,95 @@ body{
     border-radius: 10px 3px 10px 10px;
 }
 
+.user-message{
+    transform: translate(50%);
+    animation: fade-in-right .3s ease-in-out both;
+    opacity: 0;
+    margin-top: 20px;
+}
+
 .chatbot-message{
     background: #0652c0;
     color: var(--light-color);
     align-self: flex-start;
     border-radius: 10px 10px 3px 10px;
+    transform: translate(-50%);
+    opacity: 0;
+    animation: fade-in-left .3s ease-in-out both;
+}
+
+@keyframes fade-in-right{
+0%{
+    transform: translate(50%);
+    opacity: 0;
+}
+100%{
+    transform: translate(0%);
+    opacity: 1;
+}
+}
+
+.chat-body .loading{
+    display: flex;
+    position: absolute;
+    bottom: 5%;
+    left: 2%;
+    z-index: 999;
+}
+
+.chat-body .loading > .circle{
+height: 20px;
+width: 20px;
+background-color: #0652c0;
+margin: 5px;
+border-radius: 50%;
+}
+
+.circle-1{
+    animation: blink 1s ease-in-out 0ms both infinite;
+}
+.circle-2{
+    animation: blink 1s ease-in-out 200ms both infinite;
+}
+.circle-3{
+    animation: blink 1s ease-in-out 400ms both infinite;
+}
+
+.bot-response-container{
+    display: flex;
+    height: 45px;
+    align-items:center;
+    justify-content: flex-start;
+    width: 95%;
+    word-wrap: break-word;
+}
+
+@keyframes fade-in-left{
+0%{
+    transform: translate(-50%);
+    opacity: 0;
+}
+100%{
+    transform: translate(0%);
+    opacity: 1;
+}
+}
+
+@keyframes blink {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.hide{
+    display: none !important;
+}
+
+.bot-response-container img{
+    margin-top: auto;
+    width: 45px;
+    height: 40px;
 }
